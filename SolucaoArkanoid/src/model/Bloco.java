@@ -1,4 +1,4 @@
-package game;
+package model;
 
 import com.senac.SimpleJava.Graphics.Canvas;
 import com.senac.SimpleJava.Graphics.Color;
@@ -8,22 +8,14 @@ public class Bloco extends Sprite {
 
 	private int vidas;
 
-	public Bloco(int x, int y, Color background) {
-		super(22, 10, background);
+	public Bloco(int x, int y, Color cor, int vidas) {
+		super(18, 12, cor);
 		setPosition(x,y);
-		vidas = 1;
+		this.vidas = vidas;
 	}
 
-	public boolean hit() {
-		if (!isVivo()) {
-			return false;
-		}
+	public void hit() {
 		vidas--;
-		return !isVivo();
-	}
-
-	public boolean isVivo() {
-		return vidas > 0;
 	}
 
 	@Override
@@ -31,5 +23,8 @@ public class Bloco extends Sprite {
 		if (isVivo())
 			super.draw(canvas);
 	}
-	
+
+	public boolean isVivo() {
+		return (vidas > 0);
+	}
 }
